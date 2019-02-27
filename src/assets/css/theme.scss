@@ -1,0 +1,203 @@
+$blue: #3190e8;
+$bc: #e4e4e4;
+$c999: #999;
+$ec: #eee;
+$fc: #fff;
+$lightBlue: #6abdff;
+$stroke: #2d3043;
+$purple: #2c324b;
+$red: #ed3638;
+$green: #52bab5;
+$c89: #8988a8;
+$deepBlue: #4a559d;
+
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #52bab5;
+  border-color: #52bab5;
+}
+
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: #52bab5;
+}
+
+.el-button--success {
+  color: #fff;
+  background-color: #52bab5;
+  border-color: #52bab5;
+}
+
+.el-menu-item.is-active {
+  color: #52bab5;
+}
+
+.el-button--primary {
+  color: #fff;
+  background-color: #52bab5;
+  border-color: #52bab5;
+}
+
+.el-pagination.is-background .el-pager li.active {
+  background-color: #52bab5;
+  color: #fff;
+}
+
+// 背景图片地址和大小
+@mixin bis($url, $attachment: "scroll") {
+  background-image: url($url);
+  -moz-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: $attachment; /*scroll默认随着页面的其余部分滚动，fixed固定*/
+  background-position: center center;
+}
+
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+//定位全屏
+@mixin allcover($bgcolor: rgba(0, 0, 0, 0.3)) {
+  @include wh(100%, 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: $bgcolor;
+}
+
+//定位上下左右居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+//定位上下居中
+@mixin ct {
+  position: absolute;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+//定位左右居中
+@mixin cl {
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+
+//宽高
+@mixin wh($width, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+//高,行高
+@mixin hlh($height) {
+  height: $height;
+  line-height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: "Microsoft YaHei") {
+  font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color: #333) {
+  font-size: $size;
+  color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: $type;
+  justify-content: $type;
+  -webkit-flex-wrap: wrap;
+  -webkit-box-lines: multiple;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+//提示文字的颜色和字体大小
+@mixin inputp($color: #999, $fonts: 0.3rem) {
+  &::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: $color !important;
+    font-size: $fonts;
+    background: transparent;
+  }
+  &:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $color !important;
+    font-size: $fonts;
+    background: transparent;
+  }
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $color !important;
+    font-size: $fonts;
+    background: transparent;
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: $color !important;
+    font-size: $fonts;
+    background: transparent;
+  }
+}
+
+//外边距
+@mixin margin($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  margin-top: $top;
+  margin-left: $left;
+  margin-right: $right;
+  margin-bottom: $bottom;
+}
+
+//内边距
+@mixin padding($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  padding-top: $top;
+  padding-left: $left;
+  padding-right: $right;
+  padding-bottom: $bottom;
+}
+
+@mixin transform($type) {
+  transform: $type;
+  -ms-transform: $type;
+  -moz-transform: $type;
+  -webkit-transform: $type;
+  -o-transform: $type;
+}
+@mixin submitBtns(
+  $width: 80%,
+  $height: 0.8rem,
+  $fonts: 0.3rem,
+  $color: #333,
+  $bgcolor: #fff,
+  $br: 5px
+) {
+  @include wh($width, $height);
+  line-height: $height;
+  @include sc($fonts, $color);
+  background: $bgcolor;
+  @include borderRadius($br);
+  text-align: center;
+  margin: 0 auto;
+}
